@@ -1,0 +1,11 @@
+[Default Applications]
+image/jpeg=swayimg-folder.desktop
+image/png=swayimg-folder.desktop
+image/webp=swayimg-folder.desktop
+image/gif=swayimg-folder.desktop
+
+[Added Associations]
+image/jpeg=swayimg-folder.desktop;
+image/png=swayimg-folder.desktop;
+image/webp=swayimg-folder.desktop;
+image/gif=swayimg-folder.desktop;

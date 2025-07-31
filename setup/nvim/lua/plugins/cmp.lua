@@ -1,0 +1,125 @@
+-- ~/.config/nvim/lua/plugins/cmp.lua
+
+return {
+  "hrsh7th/nvim-cmp",
+  dependencies = {
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-cmdline",
+    "saadparwaiz1/cmp_luasnip",
+    "L3MON4D3/LuaSnip",
+    "rafamadriz/friendly-snippets", -- Дополнительные сниппеты
+  },
+  config = function()
+    local cmp = require("cmp")
+    local luasnip = require("luasnip")
+
+    -- Загрузка сниппетов из friendly-snippets
+    require("luasnip.loaders.from_vscode").lazy_load()
+
+    cmp.setup({
+      snippet = {
+        expand = function(args)
+          luasnip.lsp_expand(args.body)
+        end,
+      },
+      mapping = cmp.mapping.preset.insert({
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.abort(),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+      }),
+      sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "path" },
+      }),
+    })
+
+    -- Настройка LSP серверов
+    local lspconfig = require("lspconfig")
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+    -- Языковые серверы
+    -- Python
+    lspconfig.pyright.setup({
+      capabilities = capabilities,
+      settings = {
+        python = {
+          analysis = {
+            typeCheckingMode = "basic",
+            autoSearchPaths = true,
+            useLibraryCodeForTypes = true,
+          }
+        }
+      }
+    })
+
+    -- C/C++
+    lspconfig.clangd.setup({ capabilities = capabilities })
+
+    -- Go
+    lspconfig.gopls.setup({
+      capabilities = capabilities,
+      settings = {
+        gopls = {
+          analyses = {
+            unusedparams = true,
+          },
+          staticcheck = true,
+        },
+      },
+    })
+
+    -- HTML/CSS/JSON/JavaScript/TypeScript
+    lspconfig.html.setup({ capabilities = capabilities })
+    lspconfig.cssls.setup({ capabilities = capabilities })
+    lspconfig.jsonls.setup({ capabilities = capabilities })
+
+    -- Bash
+    lspconfig.bashls.setup({ capabilities = capabilities })
+
+    -- Lua
+    lspconfig.lua_ls.setup({
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          runtime = { version = "LuaJIT" },
+          diagnostics = { globals = { "vim" } },
+          workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+          telemetry = { enable = false },
+        }
+      }
+    })
+
+    -- Rust (если нужно)
+    -- lspconfig.rust_analyzer.setup({ capabilities = capabilities })
+
+    -- Docker
+    lspconfig.dockerls.setup({ capabilities = capabilities })
+
+    -- YAML
+    lspconfig.yamlls.setup({ capabilities = capabilities })
+  end,
+}

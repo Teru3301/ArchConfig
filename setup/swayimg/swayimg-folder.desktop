@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Swayimg (Folder Mode)
+Exec=/usr/local/bin/swayimg-thunar %f
+Type=Application
+MimeType=image/jpeg;image/png;image/webp;image/gif;
+Categories=Graphics;Viewer;

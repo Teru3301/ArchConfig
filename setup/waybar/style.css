@@ -1,0 +1,101 @@
+* {
+    border: none;
+    font-family: "Nerd Font Hack", sans-serif;
+    font-size: 12px;
+    min-height: 20px;
+}
+
+window#waybar {
+    background: rgba(40, 42, 54, 0.9); /* Полупрозрачный фон */
+    color: #f8f8f2; /* Основной цвет текста */
+}
+
+.modules-left, .modules-center, .modules-right{
+    padding: 0 8px;
+}
+
+
+/* Стили для предупреждений и критических состояний */
+
+#cpu.warning,
+#memory.warning,
+#temperature.warning,
+#battery.warning {
+    color: #ffb86c; /* Желтый цвет для предупреждений */
+}
+
+#cpu.critical,
+#memory.critical,
+#temperature.critical,
+#battery.critical,
+#network.disconnected {
+    color: #ff5555; /* Красный цвет для критических состояний */
+}
+
+
+/* Стили модулей */
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#pulseaudio,
+#battery,
+#language,
+#custom-nvidia-nvidia,
+#custom-gpu-temp,
+#custom-keyboard-layout {
+    padding-right: 8px;
+}
+#tray, #custom-playerctl, #mpris {
+    background: #44475a;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 3px;
+    padding-right: 7px;
+    padding-left: 7px;
+}
+
+
+#pulseaudio,
+#language {
+    margin-right: 10px;
+}
+
+
+/* Стили для workspace */
+#workspaces button {
+    color: #f8f8f2; /* Цвет текста */
+    background: transparent; /* Прозрачный фон */
+    padding: 0 8px; /* Отступы */
+    margin: 0 2px; /* Отступы между workspace */
+    border-radius: 3px; /* Закругление углов */
+}
+
+/* Пустой workspace */
+#workspaces button {
+    color: #6272a4; /* Цвет текста пустого workspace */
+}
+
+/* Workspace с запущенными приложениями */
+#workspaces button.occupied {
+    color: #f8f8f2; /* Цвет текста workspace с приложениями */
+}
+
+/* Текущий workspace */
+#workspaces button.active {
+    color: #f8f8f2; /* Цвет текста активного workspace */
+    background: #44475a; /* Фон активного workspace */
+}
+
+/* Workspace с уведомлением */
+#workspaces button.urgent {
+    color: #44475a; /* Цвет текста workspace с уведомлением */
+    background: #eec746; /* Фон workspace с уведомлением */
+}
+
+/* При наведении курсора */
+#workspaces button:hover {
+    color: #f8f8f2; /* Цвет текста активного workspace */
+    background: #656880; /* Фон активного workspace */
+}
+

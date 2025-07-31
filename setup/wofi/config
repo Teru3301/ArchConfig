@@ -1,0 +1,12 @@
+[General]
+width = 400
+height = 700
+prompt = Тута надо фигачить
+show = drun
+allow_images = true
+mode=drun
+normal_window=true
+no_actions=true
+
+
+
