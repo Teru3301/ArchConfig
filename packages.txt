@@ -18,6 +18,7 @@ fastfetch
 lazygit
 vim
 htop
+yazi
 
 # idk
 dns-resolver
