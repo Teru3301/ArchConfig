@@ -43,6 +43,7 @@ telegram
 thunar
 office
 discord
+setrixtui
 
 # desktop utils
 bluetooth
