@@ -1,4 +1,5 @@
 -- ~/.config/nvim/lua/plugins/cmp.lua
+-- Настройка LSP-серверов вынесена в plugins/lspconfig.lua
 
 return {
   "hrsh7th/nvim-cmp",
@@ -56,70 +57,5 @@ return {
         { name = "path" },
       }),
     })
-
-    -- Настройка LSP серверов
-    local lspconfig = require("lspconfig")
-    local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-    -- Языковые серверы
-    -- Python
-    lspconfig.pyright.setup({
-      capabilities = capabilities,
-      settings = {
-        python = {
-          analysis = {
-            typeCheckingMode = "basic",
-            autoSearchPaths = true,
-            useLibraryCodeForTypes = true,
-          }
-        }
-      }
-    })
-
-    -- C/C++
-    lspconfig.clangd.setup({ capabilities = capabilities })
-
-    -- Go
-    lspconfig.gopls.setup({
-      capabilities = capabilities,
-      settings = {
-        gopls = {
-          analyses = {
-            unusedparams = true,
-          },
-          staticcheck = true,
-        },
-      },
-    })
-
-    -- HTML/CSS/JSON/JavaScript/TypeScript
-    lspconfig.html.setup({ capabilities = capabilities })
-    lspconfig.cssls.setup({ capabilities = capabilities })
-    lspconfig.jsonls.setup({ capabilities = capabilities })
-
-    -- Bash
-    lspconfig.bashls.setup({ capabilities = capabilities })
-
-    -- Lua
-    lspconfig.lua_ls.setup({
-      capabilities = capabilities,
-      settings = {
-        Lua = {
-          runtime = { version = "LuaJIT" },
-          diagnostics = { globals = { "vim" } },
-          workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-          telemetry = { enable = false },
-        }
-      }
-    })
-
-    -- Rust (если нужно)
-    -- lspconfig.rust_analyzer.setup({ capabilities = capabilities })
-
-    -- Docker
-    lspconfig.dockerls.setup({ capabilities = capabilities })
-
-    -- YAML
-    lspconfig.yamlls.setup({ capabilities = capabilities })
   end,
 }

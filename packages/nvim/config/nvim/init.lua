@@ -35,7 +35,6 @@ require("lazy").setup({
   { import = "plugins.barbar" },            -- [2] Вкладки буферов с иконками
 
   { import = "plugins.lspconfig" },
-  { import = "plugins.nvim-treesitter" },
   { import = "plugins.lazygit" },           -- [3] Git-интеграция
   { import = "plugins.cmp" },               -- [3] Система автодополнения
   { import = "plugins.autopairs" },         -- [3] Автозакрытие скобок
