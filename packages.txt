@@ -1,0 +1,59 @@
+# Один пакет на строку = имя папки в packages/
+# Порядок в этом файле = порядок установки
+# Строки с # и пустые строки игнорируются
+
+# packet managers
+yay
+
+# utils
+tree
+bat
+duf
+lsd
+mpv
+zip
+wget
+openssh
+fastfetch
+lazygit
+vim
+htop
+
+# idk
+dns-resolver
+
+# dependencies
+nvidia_for_laptop
+fonts
+pipewire
+xdg-portal
+
+# packages
+hypr
+niri
+noctalia
+nvim
+kitty
+zsh
+btop
+firefox
+telegram
+# wofi
+thunar
+office
+discord
+
+# desktop utils
+bluetooth
+# gtk-theme
+ristretto
+obs
+cursor
+
+# dev
+cpp
+go
+python
+dotnet
+lsp
+
