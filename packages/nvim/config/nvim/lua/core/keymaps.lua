@@ -63,11 +63,16 @@ map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "Search words" }
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>", { desc = "Search files" })
 
 ----- 4. Текстовые объекты -----
--- Treesitter текстовые объекты
-map({ "x", "o" }, "af", ":<C-U>lua require('nvim-treesitter.textobjects').select()<CR>", { desc = "Select outer function" })
-map({ "x", "o" }, "if", ":<C-U>lua require('nvim-treesitter.textobjects').select()<CR>", { desc = "Select inner function" })
-map({ "x", "o" }, "ac", ":<C-U>lua require('nvim-treesitter.textobjects').select()<CR>", { desc = "Select outer class" })
-map({ "x", "o" }, "ic", ":<C-U>lua require('nvim-treesitter.textobjects').select()<CR>", { desc = "Select inner class" })
+-- Treesitter текстовые объекты (nvim-treesitter-textobjects, ветка main)
+local function ts_select(query)
+  return function()
+    require("nvim-treesitter-textobjects.select").select_textobject(query, "textobjects")
+  end
+end
+map({ "x", "o" }, "af", ts_select("@function.outer"), { desc = "Select outer function" })
+map({ "x", "o" }, "if", ts_select("@function.inner"), { desc = "Select inner function" })
+map({ "x", "o" }, "ac", ts_select("@class.outer"), { desc = "Select outer class" })
+map({ "x", "o" }, "ic", ts_select("@class.inner"), { desc = "Select inner class" })
 
 ----- 5. Плагины -----
 -- NvimTree
@@ -88,3 +93,4 @@ map("v", "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.
 -- Перезагрузка конфигурации (удобно для разработки)
 map("n", "<leader>R", "<cmd>lua require('plenary.reload').reload_module('plugins')<CR><cmd>source ~/.config/nvim/init.lua<CR>", 
   { desc = "Reload Neovim config" })
+

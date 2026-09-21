@@ -69,7 +69,7 @@ return {
       "lua_ls",
       "dockerls",
       "yamlls",
-      -- "rust_analyzer",
+      "rust_analyzer",
     })
   end,
 }

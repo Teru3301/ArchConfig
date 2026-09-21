@@ -5,4 +5,8 @@ set -euo pipefail
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$DIR/../../lib/common.sh"
 
-pkg_install_many materia-gtk-theme papirus-icon-theme lxappearance
+pkg_install_many materia-gtk-theme papirus-icon-theme adw-gtk-theme
+
+gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+

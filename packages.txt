@@ -6,7 +6,6 @@
 yay
 
 # utils
-tree
 bat
 duf
 lsd

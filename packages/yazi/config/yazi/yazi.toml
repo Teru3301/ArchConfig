@@ -1,0 +1,10 @@
+[opener]
+image = [
+  { run = 'ristretto %s', orphan = true, desc = "Ristretto", for = "unix" },
+]
+
+[open]
+prepend_rules = [
+  { mime = "image/*", use = "image" },
+]
+

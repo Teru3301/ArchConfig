@@ -13,11 +13,12 @@ pkg_install tree-sitter
 
 pkg_install_many \
     bash-language-server \
-    dockerfile-language-server-nodejs \
+    dockerfile-language-server \
     typescript-language-server \
     vscode-langservers-extracted \
     lua-language-server \
-    yaml-language-server
+    yaml-language-server \
+    rust-analyzer
 
 # Примечание: отдельного "html-languageserver" сознательно нет — в Arch
 # он называется vscode-html-languageserver и даёт те же бинарники, что уже
