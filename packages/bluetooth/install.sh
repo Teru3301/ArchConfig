@@ -6,6 +6,4 @@ source "$DIR/../../lib/common.sh"
 pkg_install bluez-utils 
 # pkg_install blueman
 
-log_info "Включаю bluetooth.service"
-sudo systemctl enable --now bluetooth.service
-# log_ok "Bluetooth готов, GUI: blueman-manager"
+sudo systemctl disable --now bluetooth.service
